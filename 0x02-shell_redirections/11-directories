@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d ! -path . -print | wc -1
+count=$(find . -mindepth 1 -type d -printf '.' | wc -c)
