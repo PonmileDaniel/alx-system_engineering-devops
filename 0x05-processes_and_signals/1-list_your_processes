@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#Display current running process
+ps -faux
