@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# why you No
+clean_up='rm /var/run/myscript.pid; exit $?'
+
+echo $$ > /var/run/myscript.pid"
