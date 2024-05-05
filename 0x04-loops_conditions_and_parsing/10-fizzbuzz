@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Display FizzBuzz when the number is a multiple of 3 and 5.
 
-for num in (1..100)
+for num in {1..100}
 do
 	if (( num % 3 == 0 && num % 5 == 0 ))
 	then
