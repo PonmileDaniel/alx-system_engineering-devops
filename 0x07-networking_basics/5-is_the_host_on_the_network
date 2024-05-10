@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-#Bash if the host on the network
+#a Bashif the host
 
-if [ $# -eq 0]; then
+if [ $# -eq 0 ]; then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 	exit
-elif [ $# -gt 1]; then
+elif [ $# -gt 1 ]; then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 	exit
 else
 	ping "$1" -c 5
-f
+fi
