@@ -1,0 +1,1 @@
+This file basically contains differnt architecture of how a web application func or operate using diagrams.
