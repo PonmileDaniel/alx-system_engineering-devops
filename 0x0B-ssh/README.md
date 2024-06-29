@@ -1,0 +1,1 @@
+This is basically accessing sever with ssh
