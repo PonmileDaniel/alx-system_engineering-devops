@@ -4,7 +4,7 @@ sudo apt-get Update
 
 echo -e "Installing UFW\n"
 
-sudo apt-get instral -y ufw
+sudo apt-get install -y ufw
 
 echo -e "configuring UFW...\n"
 
