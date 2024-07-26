@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+pkill -f 'apache2'
+apt-get update
+apt-get install -y apache
+sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf
+systemctl start apache2
+systemctl enable apache2
