@@ -4,7 +4,7 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    base_url = "https://jsonplaceholder.typicode.com"
+    base_url = "https://jsonplaceholder.typicode.com/"
 
     # Fetch user information
     user = '{}users/{}'.format(base_url, sys.argv[1])
