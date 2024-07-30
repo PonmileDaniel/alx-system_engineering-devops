@@ -1,42 +1,19 @@
 #!/usr/bin/python3
-""" JSON placeholder API to get TODO list progress of an employee """
+""" Script that uses JSON placeholder API """
 import requests
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
-        sys.exit(1)
+    base = "https://jsonplaceholder.typicode.com/"
 
-    try:
-        employee_id = int(sys.argv[1])
-    except ValueError:
-        print("Employee ID must be an integer.")
-        sys.exit(1)
+    users = requests.get(base + "users/{}".format(sys.argv[1])).json()
+    todos = requests.get(base + "todos", params={"userId": sys.argv[1]}).json()
 
-    base_url = "https://jsonplaceholder.typicode.com/"
+    completed = [task.get("title") for task in todos if task.get("completed")]
 
-    # Fetch user information
-    user_url = "{}users/{}".format(base_url, employee_id)
-    user_response = requests.get(user_url)
-    user_data = user_response.json()
-
-    # Get employee name
-    name = user_data.get('name')
-
-    # Fetch tasks for the user
-    todos_url = "{}todos?userId={}".format(base_url, employee_id)
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
-
-    # Separate completed and total tasks
-    completed_tasks = [task for task in todos_data if task.get('completed')]
-    tasks = len(todos_data)
-    done = len(completed_tasks)
-
-    # Display employee TODO list progress
-    print("Employee {} is done with tasks({}/{}):".format(name, done, tasks))
-
-    # Print titles of completed tasks
-    for task in completed_tasks:
-        print("\t {}".format(task.get('title')))
+    name = users.get("name")
+    count = len(completed)
+    total = len(todos)
+    print("Employee {} is done with tasks({}/{}):".format(name, count, total))
+    for task_title in completed:
+        print("\t {}".format(task_title))
