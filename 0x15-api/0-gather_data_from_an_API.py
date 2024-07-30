@@ -1,19 +1,14 @@
 #!/usr/bin/python3
-""" Script that uses JSON placeholder API """
+"""Returns to-do list information for a given employee ID."""
 import requests
 import sys
 
 if __name__ == "__main__":
-    base = "https://jsonplaceholder.typicode.com/"
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
+    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
 
-    users = requests.get(base + "users/{}".format(sys.argv[1])).json()
-    todos = requests.get(base + "todos", params={"userId": sys.argv[1]}).json()
-
-    completed = [task.get("title") for task in todos if task.get("completed")]
-
-    name = users.get("name")
-    count = len(completed)
-    total = len(todos)
-    print("Employee {} is done with tasks({}/{}):".format(name, count, total))
-    for task_title in completed:
-        print("\t {}".format(task_title))
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(c)) for c in completed]
