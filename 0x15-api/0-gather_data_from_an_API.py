@@ -6,12 +6,12 @@ import sys
 
 if __name__ == "__main__":
     base_url = "https://jsonplaceholder.typicode.com/"
-    
+
     user = '{}users/{}'.format(base_url, sys.argv[1])
     res = requests.get(user)
-    todo_data = res.json()
-    print("Employee {} is done with tasks".format(todo_data.get('name')), end="")
-    
+    data = res.json()
+    print("Employee {} is done with tasks".format(data.get('name')), end="")
+
     todos = '{}todos?userId={}'.format(base_url, sys.argv[1])
     res = requests.get(todos)
     tasks = res.json()
