@@ -1,34 +1,34 @@
 #!/usr/bin/python3
-""" Script that uses JSONPlaceholder API to get information about employee """
+""" JSONPlaceholder API to get information about an employee """
 import csv
 import requests
 import sys
 
-
 if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/'
+    base_url = 'https://jsonplaceholder.typicode.com/'
 
-    userid = sys.argv[1]
-    user = '{}users/{}'.format(url, userid)
-    res = requests.get(user)
-    json_o = res.json()
-    name = json_o.get('username')
+    user_id = sys.argv[1]
+    user_url = '{}users/{}'.format(base_url, user_id)
+    response = requests.get(user_url)
+    user_data = response.json()
+    username = user_data.get('username')
 
-    todos = '{}todos?userId={}'.format(url, userid)
-    res = requests.get(todos)
-    tasks = res.json()
-    l_task = []
-    for task in tasks:
-        l_task.append([userid,
-                       name,
-                       task.get('completed'),
-                       task.get('title')])
+    todos_url = '{}todos?userId={}'.format(base_url, user_id)
+    response = requests.get(todos_url)
+    todo_list = response.json()
 
-    filename = '{}.csv'.format(userid)
-    with open(filename, mode='w') as employee_file:
-        employee_writer = csv.writer(employee_file,
-                                     delimiter=',',
-                                     quotechar='"',
-                                     quoting=csv.QUOTE_ALL)
-        for task in l_task:
-            employee_writer.writerow(task)
+    task_details = []
+    for todo in todo_list:
+        task_details.append([user_id,
+                             username,
+                             todo.get('completed'),
+                             todo.get('title')])
+
+    filename = '{}.csv'.format(user_id)
+    with open(filename, mode='w') as csv_file:
+        writer = csv.writer(csv_file,
+                            delimiter=',',
+                            quotechar='"',
+                            quoting=csv.QUOTE_ALL)
+        for task in task_details:
+            writer.writerow(task)
