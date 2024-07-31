@@ -9,9 +9,9 @@ if __name__ == "__main__":
 
     all_tasks = {}
     for user in users:
-        user_id = user.get("id")
+        uid = user.get("id")
         username = user.get("username")
-        todos = requests.get(base_url + "todos", params={"userId": user_id}).json()
+        todos = requests.get(base_url + "todos", params={"userId": uid}).json()
 
         user_tasks = [{
             "task": todo.get("title"),
