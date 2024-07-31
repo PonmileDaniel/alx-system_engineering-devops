@@ -19,7 +19,7 @@ if __name__ == "__main__":
             "username": username
         } for todo in todos]
 
-        all_tasks[user_id] = user_tasks
+        all_tasks[uid] = user_tasks
 
     with open("todo_all_employees.json", "w") as json_file:
         json.dump(all_tasks, json_file)
