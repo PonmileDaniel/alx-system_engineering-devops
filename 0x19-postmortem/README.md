@@ -38,4 +38,4 @@ Implement a more robust testing pipeline for load balancer configuration.
 Add specific monitoring alerts for load balancer routing issues.
 Patch Nginx server to include the latest security and stability updates.
 
-https://github.com/PonmileDaniel/alx-system_engineering-devops/blob/master/0x19-postmortem/WhatsApp%20Image%202024-08-18%20at%2017.33.51.jpeg
+https://github.com/PonmileDaniel/alx-system_engineering-devops/blob/master/0x19-postmortem/WhatsApp%20Image%202024-08-18%20at%2018.35.01.jpeg
