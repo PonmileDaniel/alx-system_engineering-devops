@@ -1,5 +1,3 @@
-# Increase the amountnn of traffic an Nginx server can handle.
-
 # Increase the ULINIT of the default file
 exec {'replace':
 	provider => shell,
